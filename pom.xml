@@ -19,11 +19,14 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
-            <junit-jupiter.version>5.3.2</junit-jupiter.version>
-            
-        <mockito.version>2.24.0</mockito.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <spring-boot.version>2.7.8</spring-boot.version>
+    <spring-kafka.version>2.9.3</spring-kafka.version>
+    <springfox.version>3.0.0</springfox.version>
+    <micrometer.registry.prometheus>1.10.3</micrometer.registry.prometheus>
+    <junit-jupiter.version>5.9.2</junit-jupiter.version>
+    <mockito.version>2.24.0</mockito.version>
   </properties>
   
   <dependencyManagement>
@@ -31,9 +34,21 @@
     <dependencies>
       <dependency>
         <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-log4j2</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+      
+      <!-- test -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-test</artifactId>
+        <version>${spring-boot.version}</version>
         <scope>test</scope>
-        <version>2.7.8</version>
         <exclusions>
             <exclusion>
                  <groupId>junit</groupId>
@@ -41,20 +56,38 @@
             </exclusion>
         </exclusions>
       </dependency>
-      
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.9.2</version>
+        <version>${junit-jupiter.version}</version>
         <scope>test</scope>
       </dependency>
+      
+      <!-- monitoring and liveness / readiness -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-registry-prometheus</artifactId>
+        <version>${micrometer.registry.prometheus}</version>
+      </dependency>
+      
+      
+      <!-- kafka -->
+      <dependency>
+        <groupId>org.springframework.kafka</groupId>
+        <artifactId>spring-kafka</artifactId>
+        <version>${spring-kafka.version}</version>
+      </dependency>
         
-      <!--dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.11</version>
-        <scope>test</scope>
-      </dependency-->
     </dependencies>
   </dependencyManagement>
   
