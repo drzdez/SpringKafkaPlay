@@ -7,14 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-/**
- * Hello world!
- *
- */
 @SpringBootApplication
 public class App {
     
-        private static final Logger logger = LogManager.getLogger(App.class);
+     private static final Logger logger = LogManager.getLogger(App.class);
 
     
     public static void main( String[] args )
@@ -29,6 +25,4 @@ public class App {
                     logger.info("Key: " + key + " Value: " + value);
                 });
     }    
-    
-    
 }
