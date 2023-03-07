@@ -7,8 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>SpringKafkaPlay</name>
-
-  <!-- FIXME change it to the project's website -->
+  <description>Demo project for Kafka in Spring</description>
   <url>http://www.example.com</url>
 
   <modules>
@@ -18,15 +17,26 @@
   </modules>
 
   <properties>
+      <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
     <spring-boot.version>2.7.8</spring-boot.version>
+    <!-- 3.0.4 -->
+
+    <spring-cloud.version>2022.0.1</spring-cloud.version>
     <spring-kafka.version>2.9.3</spring-kafka.version>
+    <apache-kafka.version>3.3.2</apache-kafka.version>
+
+
     <springfox.version>3.0.0</springfox.version>
     <micrometer.registry.prometheus>1.10.3</micrometer.registry.prometheus>
+
     <junit-jupiter.version>5.9.2</junit-jupiter.version>
     <mockito.version>2.24.0</mockito.version>
+
+    
   </properties>
   
   <dependencyManagement>
@@ -56,6 +66,12 @@
             </exclusion>
         </exclusions>
       </dependency>
+      <!--dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-stream-test-binder</artifactId>
+        <scope>test</scope>
+      </dependency-->
+      
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
@@ -87,6 +103,29 @@
         <artifactId>spring-kafka</artifactId>
         <version>${spring-kafka.version}</version>
       </dependency>
+      
+      <dependency>
+        <groupId>org.apache.kafka</groupId>
+        <artifactId>kafka-streams</artifactId>
+        <version>${apache-kafka.version}</version>
+      </dependency>
+      <!--dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-stream</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-stream-binder-kafka-streams</artifactId>
+      </dependency-->
+
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
         
     </dependencies>
   </dependencyManagement>
@@ -107,7 +146,12 @@
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
+          <version>3.8.1</version>
+          <configuration>
+              <source>${java.version}</source>
+              <target>${java.version}</target>
+              <release>${java.version}</release>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
@@ -134,6 +178,13 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>3.0.4</version>
+        </plugin>
+       
       </plugins>
     </pluginManagement>
   </build> 
