@@ -14,6 +14,7 @@
     <module>KafkaProducer</module>
     <module>KafkaConsumer</module>
     <module>KafkaStreams</module>
+    <module>KafkaStreamDep</module>
   </modules>
 
   <properties>
