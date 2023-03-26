@@ -3,8 +3,9 @@
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout
-                pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
+                pattern="%highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
         </Console>
+        <!-- %style{%d{ISO8601}}{black} -->
 
         <RollingFile name="RollingFile"
             fileName="./logs/spring-boot-logger-log4j2.log"
@@ -30,8 +31,15 @@
             <AppenderRef ref="RollingFile" />
         </Root>
 
-        <Logger name="com.spring" level="trace"></Logger>
-        <Logger name="com.evocodsys" level="trace"></Logger>
+        <Logger name="o.s.c.l.LogAccessor" level="debug">
+            <AppenderRef ref="Console" />
+        </Logger>   
+        
+        <Logger name="com.spring" level="debug"></Logger>
+        
+        <Logger name="com.evocodsys" level="INFO">
+            <AppenderRef ref="Console" />
+        </Logger>
     </Loggers>
 
 </Configuration>
