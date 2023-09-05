@@ -13,6 +13,9 @@ Java version: 19.0.2, vendor: Oracle Corporation, runtime: C:\binz\jdk-19.0.2
 Default locale: cs_CZ, platform encoding: UTF-8
 OS name: "windows 11", version: "10.0", arch: "amd64", family: "windows"
 
-c
 
+Topology tool:
+https://zz85.github.io/kafka-streams-viz/
+
+mvn dependency::tree > deptree.txt
 
